@@ -70,7 +70,68 @@ class Ui_MainWindow(object):
         self.suffix_layout.addWidget(self.suffix_box)
 
 
-        self.gridLayout.addLayout(self.suffix_layout, 7, 3, 1, 1)
+        self.gridLayout.addLayout(self.suffix_layout, 8, 3, 1, 1)
+
+        self.control_layout = QHBoxLayout()
+        self.control_layout.setObjectName(u"control_layout")
+        self.name_box = QGroupBox(self.centralwidget)
+        self.name_box.setObjectName(u"name_box")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.name_box.sizePolicy().hasHeightForWidth())
+        self.name_box.setSizePolicy(sizePolicy1)
+        self.verticalLayout_5 = QVBoxLayout(self.name_box)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.name_layout = QHBoxLayout()
+        self.name_layout.setObjectName(u"name_layout")
+        self.name_label = QLabel(self.name_box)
+        self.name_label.setObjectName(u"name_label")
+
+        self.name_layout.addWidget(self.name_label)
+
+        self.name_input = QLineEdit(self.name_box)
+        self.name_input.setObjectName(u"name_input")
+
+        self.name_layout.addWidget(self.name_input)
+
+
+        self.verticalLayout_5.addLayout(self.name_layout)
+
+        self.no_layout = QHBoxLayout()
+        self.no_layout.setObjectName(u"no_layout")
+        self.no_label = QLabel(self.name_box)
+        self.no_label.setObjectName(u"no_label")
+
+        self.no_layout.addWidget(self.no_label)
+
+        self.no_input = QLineEdit(self.name_box)
+        self.no_input.setObjectName(u"no_input")
+
+        self.no_layout.addWidget(self.no_input)
+
+
+        self.verticalLayout_5.addLayout(self.no_layout)
+
+
+        self.control_layout.addWidget(self.name_box)
+
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.rename = QPushButton(self.centralwidget)
+        self.rename.setObjectName(u"rename")
+
+        self.verticalLayout.addWidget(self.rename)
+
+
+        self.control_layout.addLayout(self.verticalLayout)
+
+
+        self.gridLayout.addLayout(self.control_layout, 9, 1, 1, 3)
 
         self.nav_layout = QHBoxLayout()
         self.nav_layout.setObjectName(u"nav_layout")
@@ -155,68 +216,17 @@ class Ui_MainWindow(object):
         self.iteration_layout.addWidget(self.iteration_box)
 
 
-        self.gridLayout.addLayout(self.iteration_layout, 7, 1, 1, 1)
+        self.gridLayout.addLayout(self.iteration_layout, 8, 1, 1, 1)
 
-        self.control_layout = QHBoxLayout()
-        self.control_layout.setObjectName(u"control_layout")
-        self.name_box = QGroupBox(self.centralwidget)
-        self.name_box.setObjectName(u"name_box")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.name_box.sizePolicy().hasHeightForWidth())
-        self.name_box.setSizePolicy(sizePolicy1)
-        self.verticalLayout_5 = QVBoxLayout(self.name_box)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.name_layout = QHBoxLayout()
-        self.name_layout.setObjectName(u"name_layout")
-        self.name_label = QLabel(self.name_box)
-        self.name_label.setObjectName(u"name_label")
+        self.file_number = QLabel(self.centralwidget)
+        self.file_number.setObjectName(u"file_number")
 
-        self.name_layout.addWidget(self.name_label)
+        self.gridLayout.addWidget(self.file_number, 7, 1, 1, 1)
 
-        self.name_input = QLineEdit(self.name_box)
-        self.name_input.setObjectName(u"name_input")
+        self.select_number = QLabel(self.centralwidget)
+        self.select_number.setObjectName(u"select_number")
 
-        self.name_layout.addWidget(self.name_input)
-
-
-        self.verticalLayout_5.addLayout(self.name_layout)
-
-        self.no_layout = QHBoxLayout()
-        self.no_layout.setObjectName(u"no_layout")
-        self.no_label = QLabel(self.name_box)
-        self.no_label.setObjectName(u"no_label")
-
-        self.no_layout.addWidget(self.no_label)
-
-        self.no_input = QLineEdit(self.name_box)
-        self.no_input.setObjectName(u"no_input")
-
-        self.no_layout.addWidget(self.no_input)
-
-
-        self.verticalLayout_5.addLayout(self.no_layout)
-
-
-        self.control_layout.addWidget(self.name_box)
-
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.verticalLayout.addItem(self.verticalSpacer)
-
-        self.rename = QPushButton(self.centralwidget)
-        self.rename.setObjectName(u"rename")
-
-        self.verticalLayout.addWidget(self.rename)
-
-
-        self.control_layout.addLayout(self.verticalLayout)
-
-
-        self.gridLayout.addLayout(self.control_layout, 8, 1, 1, 3)
+        self.gridLayout.addWidget(self.select_number, 7, 3, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -230,6 +240,10 @@ class Ui_MainWindow(object):
         self.suffix_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540e\u7f00", None))
         self.suffix_false.setText(QCoreApplication.translate("MainWindow", u"\u4e0d\u4fee\u6539\u540e\u7f00", None))
         self.suffix_true.setText(QCoreApplication.translate("MainWindow", u"\u4fee\u6539\u540e\u7f00\u4e3a\uff1a", None))
+        self.name_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540d\u79f0\u8bbe\u7f6e", None))
+        self.name_label.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u540d\u79f0", None))
+        self.no_label.setText(QCoreApplication.translate("MainWindow", u"\u8d77\u59cb\u5e8f\u6570", None))
+        self.rename.setText(QCoreApplication.translate("MainWindow", u"\u6279\u91cf\u91cd\u547d\u540d", None))
         self.address_select.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00\u6587\u4ef6\u5939", None))
         self.all_select.setText(QCoreApplication.translate("MainWindow", u"\u5168\u9009", None))
         self.select_in.setText(QCoreApplication.translate("MainWindow", u">", None))
@@ -237,9 +251,7 @@ class Ui_MainWindow(object):
         self.iteration_box.setTitle(QCoreApplication.translate("MainWindow", u"\u8fed\u4ee3\u6dfb\u52a0", None))
         self.iteration_false.setText(QCoreApplication.translate("MainWindow", u"\u5426", None))
         self.iteration_true.setText(QCoreApplication.translate("MainWindow", u"\u662f", None))
-        self.name_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540d\u79f0\u8bbe\u7f6e", None))
-        self.name_label.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u540d\u79f0", None))
-        self.no_label.setText(QCoreApplication.translate("MainWindow", u"\u8d77\u59cb\u5e8f\u6570", None))
-        self.rename.setText(QCoreApplication.translate("MainWindow", u"\u6279\u91cf\u91cd\u547d\u540d", None))
+        self.file_number.setText(QCoreApplication.translate("MainWindow", u"\u603b\u8ba1\uff1a", None))
+        self.select_number.setText(QCoreApplication.translate("MainWindow", u"\u603b\u8ba1\uff1a", None))
     # retranslateUi
 

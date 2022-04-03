@@ -1,8 +1,10 @@
-from PySide6.QtWidgets import QMainWindow, QAbstractItemView
+from PySide6.QtWidgets import QMainWindow, QAbstractItemView, QFileDialog
 from PySide6.QtCore import QStringListModel, QItemSelectionModel
+import os
 
 from ui.main_ui import Ui_MainWindow
 from utils.config import Config
+from utils.file_control import FileControl
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -10,6 +12,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+
+        # 初始化FileControl类
+        self.file_control = FileControl()
 
         # 初始化单选框
         self.suffix_false.setChecked(True)
@@ -52,6 +57,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.select_in.clicked.connect(self.select_in_onclick)
         self.select_out.clicked.connect(self.select_out_onclick)
         self.all_select.clicked.connect(self.all_select_onclick)
+        self.address_select.clicked.connect(self.address_select_onclick)
+
+    def address_select_onclick(self):
+        files_address = QFileDialog.getExistingDirectory(
+            self, "选择文件路径", os.getcwd())
+        print(files_address)
+        self.address.setText(files_address)
+
+        # 获取文件列表
+        # 不迭代
+        if self.iteration_false.isChecked():
+            files = self.file_control.getfiles(path=files_address)
+        # 迭代
+        else:
+            files = self.file_control.getfiles(path=files_address,
+                                               iteration=True)
+
+        # 将数据设置到model
+        self.file_list_model.setStringList(files)
+        self.select_list_model.setStringList([])
+        # 更新总计数量
+        self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
+        self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
     def select_in_onclick(self):
         selected = self.file_list.selectedIndexes()
@@ -68,6 +96,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             slist.append(item)
         for i in slist[::-1]:
             self.file_list_model.removeRow(i)
+        # 更新总计数量
+        self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
+        self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
     def select_out_onclick(self):
         selected = self.select_list.selectedIndexes()
@@ -83,9 +114,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             slist.append(item)
         for i in slist[::-1]:
             self.select_list_model.removeRow(i)
+        # 更新总计数量
+        self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
+        self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
     def all_select_onclick(self):
         print(self.suffix_select.currentText())
         for i in range(3):
             self.file_list.selectionModel().setCurrentIndex(
                 self.file_list_model.index(i), QItemSelectionModel.Select)
+        # TODO: 按后缀名全选

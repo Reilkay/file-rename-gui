@@ -25,7 +25,7 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="3">
+    <item row="8" column="3">
      <layout class="QHBoxLayout" name="suffix_layout">
       <item>
        <widget class="QGroupBox" name="suffix_box">
@@ -77,6 +77,80 @@
          </item>
         </layout>
        </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="9" column="1" colspan="3">
+     <layout class="QHBoxLayout" name="control_layout">
+      <item>
+       <widget class="QGroupBox" name="name_box">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title">
+         <string>名称设置</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <layout class="QHBoxLayout" name="name_layout">
+           <item>
+            <widget class="QLabel" name="name_label">
+             <property name="text">
+              <string>文件名称</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="name_input"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="no_layout">
+           <item>
+            <widget class="QLabel" name="no_label">
+             <property name="text">
+              <string>起始序数</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="no_input"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="rename">
+          <property name="text">
+           <string>批量重命名</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
@@ -166,7 +240,7 @@
       </item>
      </layout>
     </item>
-    <item row="7" column="1">
+    <item row="8" column="1">
      <layout class="QHBoxLayout" name="iteration_layout">
       <item>
        <widget class="QGroupBox" name="iteration_box">
@@ -205,79 +279,19 @@
       </item>
      </layout>
     </item>
-    <item row="8" column="1" colspan="3">
-     <layout class="QHBoxLayout" name="control_layout">
-      <item>
-       <widget class="QGroupBox" name="name_box">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="title">
-         <string>名称设置</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <item>
-          <layout class="QHBoxLayout" name="name_layout">
-           <item>
-            <widget class="QLabel" name="name_label">
-             <property name="text">
-              <string>文件名称</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="name_input"/>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="no_layout">
-           <item>
-            <widget class="QLabel" name="no_label">
-             <property name="text">
-              <string>起始序数</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="no_input"/>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="rename">
-          <property name="text">
-           <string>批量重命名</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+    <item row="7" column="1">
+     <widget class="QLabel" name="file_number">
+      <property name="text">
+       <string>总计：</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="3">
+     <widget class="QLabel" name="select_number">
+      <property name="text">
+       <string>总计：</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
