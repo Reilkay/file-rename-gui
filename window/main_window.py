@@ -1,5 +1,5 @@
 import re
-from PySide6.QtWidgets import QMainWindow, QAbstractItemView, QFileDialog
+from PySide6.QtWidgets import QMainWindow, QAbstractItemView, QFileDialog, QMessageBox
 from PySide6.QtCore import QStringListModel, QItemSelectionModel
 import os
 
@@ -69,18 +69,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 设置最大长度
         self.suffix_select.lineEdit().setMaxLength(8)
 
+        # 后缀输入设置最大长度
+        self.suffix.setMaxLength(8)
+
         # 集中绑定
         # 按钮
         self.select_in.clicked.connect(self.select_in_onclick)
         self.select_out.clicked.connect(self.select_out_onclick)
         self.all_select.clicked.connect(self.all_select_onclick)
         self.address_select.clicked.connect(self.address_select_onclick)
+        self.iteration_true.toggled.connect(
+            self.update_file_select_list_current)
+        self.iteration_false.toggled.connect(
+            self.update_file_select_list_current)
+        self.rename.clicked.connect(self.rename_click)
         # 按键
         self.suffix_select.lineEdit().returnPressed.connect(
             self.all_select_onclick)
+        self.address.returnPressed.connect(
+            self.update_file_select_list_current)
 
     # 更新文件列表
-    def update_file_select_list(self, files_address):
+    def update_file_select_list(self, files_address: str):
         # 获取文件列表
         # 不迭代
         if self.iteration_false.isChecked():
@@ -96,6 +106,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 更新总计数量
         self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
         self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
+
+    # 使用当前地址更新文件列表
+    def update_file_select_list_current(self):
+        self.update_file_select_list(self.address.text())
 
     # 点击地址选择按钮
     def address_select_onclick(self):
@@ -179,3 +193,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         i) != suffix:
                 self.suffix_select.removeItem(i)
                 break
+
+    # 重命名
+    def rename_click(self):
+        success = self.file_control.rename(
+            address=self.address.text(),
+            iteration=False if self.iteration_false.isChecked() else True,
+            file_list=self.select_list_model.stringList(),
+            name=self.name_input.text(),
+            no=self.no_input.text(),
+            suffixif=False if self.suffix_false.isChecked() else True,
+            suffix=self.suffix_op.pre_operate(self.suffix.text()))
+        if success:
+            print("success")
+            QMessageBox.information(
+                self, '成功',
+                f'批量重命名完成！\n完成数量: {self.select_list_model.rowCount()}')
+        else:
+            msg = QMessageBox.critical(
+                self, '错误',
+                '批量重命名失败，可能存在如下问题！\n1. 命名过程中存在重名问题\n2. 存在命名不合法问题\n是否需要撤销出错前已完成的操作?',
+                QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+            if msg == QMessageBox.Yes:
+                self.file_control.revert()
+
+        # 运行结束自动刷新
+        self.update_file_select_list_current()
