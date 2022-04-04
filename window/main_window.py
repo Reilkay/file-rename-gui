@@ -79,18 +79,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.suffix_select.lineEdit().returnPressed.connect(
             self.all_select_onclick)
 
-    def address_select_onclick(self):
-        files_address = QFileDialog.getExistingDirectory(
-            self, "选择文件路径",
-            self.file_control.getpath(
-                start_from=self.config['path']['start_from'],
-                start_path=self.config['path']['start_path']))
-        if files_address == '':
-            return
-
-        # 地址同步到地址栏
-        self.address.setText(files_address)
-
+    # 更新文件列表
+    def update_file_select_list(self, files_address):
         # 获取文件列表
         # 不迭代
         if self.iteration_false.isChecked():
@@ -107,6 +97,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
         self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
+    # 点击地址选择按钮
+    def address_select_onclick(self):
+        files_address = QFileDialog.getExistingDirectory(
+            self, "选择文件路径",
+            self.file_control.getpath(
+                start_from=self.config['path']['start_from'],
+                start_path=self.config['path']['start_path']))
+        if files_address == '':
+            return
+
+        # 地址同步到地址栏
+        self.address.setText(files_address)
+        # 更新文件列表
+        self.update_file_select_list(files_address)
+
+    # 点击选择文件按钮
     def select_in_onclick(self):
         selected = self.file_list.selectedIndexes()
         slist = []
@@ -130,6 +136,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
         self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
+    # 点击取消选择文件按钮
     def select_out_onclick(self):
         selected = self.select_list.selectedIndexes()
         slist = []
@@ -151,6 +158,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.file_number.setText(f'总计：{self.file_list_model.rowCount()}')
         self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
+    # 点击全选按钮
     def all_select_onclick(self):
         # print(self.suffix_select.currentText())
         suffix = self.suffix_select.currentText()
