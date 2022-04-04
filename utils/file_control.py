@@ -16,8 +16,13 @@ class FileControl:
         cPath = path
         # 如果目录名字为中文 需要转码处理
         uPath = str(cPath)
+
+        # 使用绝对路径判断是否为文件
+        def __isfile(rel_path) -> bool:
+            return os.path.isfile(os.path.join(uPath, rel_path))
+
         if iteration is False:
-            return filter(os.path.isfile, os.listdir(uPath))
+            return filter(__isfile, os.listdir(uPath))
         else:
             files_list = []
             for root, _, files in os.walk(uPath):

@@ -112,8 +112,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         slist = []
         for i in selected:
             item = i.row()
-            inf = f"Pos:{item + 1},data: {self.file_list_model.stringList()[item]}"
-            print(inf)
+            # inf = f"Pos:{item + 1},data: {self.file_list_model.stringList()[item]}"
+            # print(inf)
             row = self.select_list_model.rowCount()
             word = self.file_list_model.stringList()[item]
             self.select_list_model.insertRow(row)
@@ -135,8 +135,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         slist = []
         for i in selected:
             item = i.row()
-            inf = f"Pos:{item + 1},data: {self.select_list_model.stringList()[item]}"
-            print(inf)
+            # inf = f"Pos:{item + 1},data: {self.select_list_model.stringList()[item]}"
+            # print(inf)
             row = self.file_list_model.rowCount()
             word = self.select_list_model.stringList()[item]
             self.file_list_model.insertRow(row)
@@ -152,7 +152,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.select_number.setText(f'总计：{self.select_list_model.rowCount()}')
 
     def all_select_onclick(self):
-        print(self.suffix_select.currentText())
+        # print(self.suffix_select.currentText())
         suffix = self.suffix_select.currentText()
         self.file_list.clearSelection()
         if self.suffix_op.pre_operate(suffix) == '.*':
@@ -164,3 +164,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.file_list.selectionModel().setCurrentIndex(
                         self.file_list_model.index(i),
                         QItemSelectionModel.Select)
+        # 删除suffix_select中之前添加的内容
+        for i in range(self.suffix_select.count()):
+            if self.suffix_select.itemText(i) not in self.config[
+                    'suffix_list'] and self.suffix_select.itemText(
+                        i) != suffix:
+                self.suffix_select.removeItem(i)
+                break

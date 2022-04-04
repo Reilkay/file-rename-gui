@@ -29,5 +29,6 @@ class SuffixOperation:
 
     def get_regular_expression(self, suffix: str) -> Pattern:
         suffix = self.pre_operate(suffix)
-        pattern = re.compile(suffix + '$')
+        # 忽略大小写
+        pattern = re.compile(suffix + '$', re.IGNORECASE)
         return pattern
