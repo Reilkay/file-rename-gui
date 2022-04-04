@@ -1,7 +1,6 @@
-import re
 from PySide6.QtWidgets import QMainWindow, QAbstractItemView, QFileDialog, QMessageBox
-from PySide6.QtCore import QStringListModel, QItemSelectionModel
-import os
+from PySide6.QtCore import QStringListModel, QItemSelectionModel, QRegularExpression
+from PySide6.QtGui import QIntValidator, QRegularExpressionValidator
 
 from ui.main_ui import Ui_MainWindow
 from utils.config import Config
@@ -69,8 +68,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 设置最大长度
         self.suffix_select.lineEdit().setMaxLength(8)
 
+        # 调整输入框限制
         # 后缀输入设置最大长度
         self.suffix.setMaxLength(8)
+        # 后缀输入设置格式限制
+        suffix_regExp = QRegularExpression('[a-zA-Z0-9\.]+')
+        suffix_Validator = QRegularExpressionValidator(suffix_regExp)
+        self.suffix.setValidator(suffix_Validator)
+        # 序号输入设置仅输入数字
+        self.no_input.setValidator(QIntValidator())
 
         # 集中绑定
         # 按钮
