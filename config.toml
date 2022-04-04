@@ -1,1 +1,9 @@
 suffix_list = ['*.*','*.mp4','*.avi','*.mkv']
+
+[path]
+# home - current user home
+# cwd - current work directory
+# custom - customize path, if choose, start_path is necessary
+start_from = 'cwd'
+# if wrong, it will start from home
+start_path = '' 

@@ -12,7 +12,7 @@ class FileControl:
     def __init__(self):
         pass
 
-    def getfiles(self, path: str, iteration: bool = False):
+    def getfiles(self, path: str, iteration: bool = False) -> list:
         cPath = path
         # 如果目录名字为中文 需要转码处理
         uPath = str(cPath)
@@ -29,3 +29,12 @@ class FileControl:
                     rel_path = os.path.relpath(root, uPath)
                     files_list.append(os.path.join(rel_path, f))
             return files_list
+
+    def getpath(self, start_from: str, start_path: str) -> str:
+        if (start_from == 'custom') and (os.path.isdir(start_path)) and (
+                start_path != ''):
+            return start_path
+        elif start_from == 'cwd':
+            return os.getcwd()
+        else:
+            return os.path.expanduser('~')
