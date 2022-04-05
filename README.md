@@ -35,7 +35,7 @@
 
 1. 克隆仓库后使用`python`解释运行。
 
-2. 在[`Release`]()页面下载对应的二进制包使用。
+2. 在[`Release`](https://github.com/Reilkay/file-rename-gui/releases)页面下载对应的二进制包使用。
 
 ## 想增加的功能（咕咕咕）
 
