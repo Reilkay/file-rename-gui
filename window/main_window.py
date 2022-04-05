@@ -1,11 +1,12 @@
 from PySide6.QtWidgets import QMainWindow, QAbstractItemView, QFileDialog, QMessageBox
 from PySide6.QtCore import QStringListModel, QItemSelectionModel, QRegularExpression, QUrl
-from PySide6.QtGui import QIntValidator, QRegularExpressionValidator, QDesktopServices
+from PySide6.QtGui import QIntValidator, QRegularExpressionValidator, QDesktopServices, QIcon
 
 from ui.main_ui import Ui_MainWindow
 from utils.config import Config
 from utils.file_control import FileControl
 from utils.suffix_op import SuffixOperation
+import resources.resources_rc
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -13,6 +14,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+
+        # 设置窗口名称及图标
+        self.setWindowTitle('批量重命名助手')
+        self.setWindowIcon(QIcon(':/images/icon.svg'))
 
         # 初始化FileControl类
         self.file_control = FileControl()

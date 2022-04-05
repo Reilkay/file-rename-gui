@@ -130,3 +130,6 @@ dmypy.json
 
 # Vscode
 .vscode
+
+# Build files
+build_resources
