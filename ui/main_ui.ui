@@ -15,26 +15,86 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="6" column="3">
-     <widget class="QListView" name="select_list">
-      <property name="minimumSize">
-       <size>
-        <width>340</width>
-        <height>0</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="3">
-     <layout class="QHBoxLayout" name="suffix_layout">
+    <item row="1" column="2">
+     <layout class="QHBoxLayout" name="about_layout">
       <item>
-       <widget class="QGroupBox" name="suffix_box">
-        <property name="title">
-         <string>后缀</string>
+       <widget class="QLabel" name="name_about">
+        <property name="styleSheet">
+         <string notr="true">color:#0F59A4</string>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <property name="text">
+         <string>Design by @Reilkay</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="project_about">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:none;color:#144A74</string>
+        </property>
+        <property name="text">
+         <string>项目地址</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item row="9" column="0">
+     <layout class="QHBoxLayout" name="iteration_layout">
+      <item>
+       <widget class="QGroupBox" name="iteration_box">
+        <property name="title">
+         <string>迭代添加</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QRadioButton" name="suffix_false">
+          <widget class="QRadioButton" name="iteration_false">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -42,12 +102,12 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>不修改后缀</string>
+            <string>否</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="suffix_true">
+          <widget class="QRadioButton" name="iteration_true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -55,23 +115,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>修改后缀为：</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="suffix">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>300</width>
-             <height>400</height>
-            </size>
+            <string>是</string>
            </property>
           </widget>
          </item>
@@ -80,7 +124,7 @@
       </item>
      </layout>
     </item>
-    <item row="9" column="1" colspan="3">
+    <item row="10" column="0" colspan="3">
      <layout class="QHBoxLayout" name="control_layout">
       <item>
        <widget class="QGroupBox" name="name_box">
@@ -138,10 +182,20 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>40</height>
+            <height>23</height>
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="revert">
+          <property name="text">
+           <string>撤销</string>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+Z</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="rename">
@@ -154,51 +208,7 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1" colspan="3">
-     <layout class="QHBoxLayout" name="nav_layout">
-      <item>
-       <widget class="QLineEdit" name="address"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="address_select">
-        <property name="text">
-         <string>打开文件夹</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="6" column="1">
-     <widget class="QListView" name="file_list">
-      <property name="minimumSize">
-       <size>
-        <width>340</width>
-        <height>0</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <layout class="QHBoxLayout" name="all_select_layout">
-      <item>
-       <widget class="QComboBox" name="suffix_select"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="all_select">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>全选</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="6" column="2">
+    <item row="7" column="1">
      <layout class="QVBoxLayout" name="in_out_layout">
       <item>
        <widget class="QPushButton" name="select_in">
@@ -240,16 +250,16 @@
       </item>
      </layout>
     </item>
-    <item row="8" column="1">
-     <layout class="QHBoxLayout" name="iteration_layout">
+    <item row="9" column="2">
+     <layout class="QHBoxLayout" name="suffix_layout">
       <item>
-       <widget class="QGroupBox" name="iteration_box">
+       <widget class="QGroupBox" name="suffix_box">
         <property name="title">
-         <string>迭代添加</string>
+         <string>后缀</string>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QRadioButton" name="iteration_false">
+          <widget class="QRadioButton" name="suffix_false">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -257,12 +267,12 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>否</string>
+            <string>不修改后缀</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="iteration_true">
+          <widget class="QRadioButton" name="suffix_true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -270,7 +280,23 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>是</string>
+            <string>修改后缀为：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="suffix">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>300</width>
+             <height>400</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -279,19 +305,73 @@
       </item>
      </layout>
     </item>
-    <item row="7" column="1">
+    <item row="8" column="2">
+     <widget class="QLabel" name="select_number">
+      <property name="text">
+       <string>总计：</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QListView" name="file_list">
+      <property name="minimumSize">
+       <size>
+        <width>340</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
      <widget class="QLabel" name="file_number">
       <property name="text">
        <string>总计：</string>
       </property>
      </widget>
     </item>
-    <item row="7" column="3">
-     <widget class="QLabel" name="select_number">
-      <property name="text">
-       <string>总计：</string>
+    <item row="7" column="2">
+     <widget class="QListView" name="select_list">
+      <property name="minimumSize">
+       <size>
+        <width>340</width>
+        <height>0</height>
+       </size>
       </property>
      </widget>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="all_select_layout">
+      <item>
+       <widget class="QComboBox" name="suffix_select"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="all_select">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>全选</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="nav_layout">
+      <item>
+       <widget class="QLineEdit" name="address"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="address_select">
+        <property name="text">
+         <string>打开文件夹</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

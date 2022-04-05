@@ -135,7 +135,17 @@ class FileControl:
         self.revert_src.reverse()
         self.revert_dst.reverse()
         revert_list = list(zip(self.revert_src, self.revert_dst))
-        for src, dst in revert_list:
-            os.rename(dst, src)
+        try:
+            for src, dst in revert_list:
+                os.rename(dst, src)
+        except OSError:
+            return False
         self.revert_src.clear()
         self.revert_dst.clear()
+        return True
+
+    def can_revert(self) -> bool:
+        if len(self.revert_src) == 0 or len(self.revert_dst) == 0:
+            return False
+        else:
+            return True

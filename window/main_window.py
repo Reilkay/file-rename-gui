@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QAbstractItemView, QFileDialog, QMessageBox
-from PySide6.QtCore import QStringListModel, QItemSelectionModel, QRegularExpression
-from PySide6.QtGui import QIntValidator, QRegularExpressionValidator
+from PySide6.QtCore import QStringListModel, QItemSelectionModel, QRegularExpression, QUrl
+from PySide6.QtGui import QIntValidator, QRegularExpressionValidator, QDesktopServices
 
 from ui.main_ui import Ui_MainWindow
 from utils.config import Config
@@ -89,11 +89,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.iteration_false.toggled.connect(
             self.update_file_select_list_current)
         self.rename.clicked.connect(self.rename_click)
+        self.project_about.clicked.connect(self.project_about_click)
+        self.revert.clicked.connect(self.revert_click)
         # 按键
         self.suffix_select.lineEdit().returnPressed.connect(
             self.all_select_onclick)
         self.address.returnPressed.connect(
             self.update_file_select_list_current)
+        self.name_input.returnPressed.connect(self.rename_press)
+        self.no_input.returnPressed.connect(self.rename_press)
 
     # 更新文件列表
     def update_file_select_list(self, files_address: str):
@@ -221,7 +225,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 '批量重命名失败，可能存在如下问题！\n1. 命名过程中存在重名问题\n2. 存在命名不合法问题\n是否需要撤销出错前已完成的操作?',
                 QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
             if msg == QMessageBox.Yes:
-                self.file_control.revert()
+                success = self.file_control.revert()
+                if success:
+                    QMessageBox.information(self, '成功', f'撤销成功！')
 
         # 运行结束自动刷新
         self.update_file_select_list_current()
+
+    # 回车键重命名需弹窗确认
+    def rename_press(self):
+        msg = QMessageBox.question(self, '重命名', '确认开始批量重命名？',
+                                   QMessageBox.Yes | QMessageBox.No,
+                                   QMessageBox.Yes)
+        if msg == QMessageBox.Yes:
+            self.rename_click()
+
+    # 撤销上一步操作需弹窗确认
+    def revert_click(self):
+        if self.file_control.can_revert():
+            msg = QMessageBox.question(self, '撤销', '确认要撤销上一步操作吗？',
+                                       QMessageBox.Yes | QMessageBox.No,
+                                       QMessageBox.No)
+            if msg == QMessageBox.Yes:
+                success = self.file_control.revert()
+                if success:
+                    QMessageBox.information(self, '成功', f'撤销成功！')
+                # 运行结束自动刷新
+                self.update_file_select_list_current()
+
+    # 打开项目地址
+    def project_about_click(self):
+        QDesktopServices.openUrl(
+            QUrl("https://github.com/Reilkay/file-rename-gui"))

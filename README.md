@@ -3,7 +3,7 @@
   <p align="center">A simple gui program for rename files.<p>
   <p align="center">
     <a href="https://blog.reilkay.com/about/"><img src="https://img.shields.io/badge/MADE--BY-Ray-blue?style=flat-square" alt="Binray • 二进制蕾伊"></a>
-    <img src="https://img.shields.io/badge/VRESION-Alpha_0.3-critical?style=flat-square" alt="version Alpha_0.3">
+    <img src="https://img.shields.io/badge/VRESION-Release_1.0-critical?style=flat-square" alt="version Release 1.0">
   </p>
 </p>
 
@@ -29,12 +29,13 @@
 + 迭代添加多级文件夹中的文件
 + 不修改文件名仅修改后缀
 + 自定义序号位数和起始值
++ 撤销上一步操作（可使用快捷键Ctrl+Z）
 
 ## 使用
 
-1. 现仅支持克隆仓库后使用`python`解释运行。
+1. 克隆仓库后使用`python`解释运行。
 
-   \*完成正式版后将在`release`中发布二进制版本
+2. 在[`Release`]()页面下载对应的二进制包使用。
 
 ## 想增加的功能（咕咕咕）
 

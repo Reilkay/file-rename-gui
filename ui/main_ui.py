@@ -29,48 +29,67 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.select_list = QListView(self.centralwidget)
-        self.select_list.setObjectName(u"select_list")
-        self.select_list.setMinimumSize(QSize(340, 0))
+        self.about_layout = QHBoxLayout()
+        self.about_layout.setObjectName(u"about_layout")
+        self.name_about = QLabel(self.centralwidget)
+        self.name_about.setObjectName(u"name_about")
+        self.name_about.setStyleSheet(u"color:#0F59A4")
 
-        self.gridLayout.addWidget(self.select_list, 6, 3, 1, 1)
+        self.about_layout.addWidget(self.name_about)
 
-        self.suffix_layout = QHBoxLayout()
-        self.suffix_layout.setObjectName(u"suffix_layout")
-        self.suffix_box = QGroupBox(self.centralwidget)
-        self.suffix_box.setObjectName(u"suffix_box")
-        self.horizontalLayout_5 = QHBoxLayout(self.suffix_box)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.suffix_false = QRadioButton(self.suffix_box)
-        self.suffix_false.setObjectName(u"suffix_false")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.about_layout.addItem(self.horizontalSpacer)
+
+        self.project_about = QPushButton(self.centralwidget)
+        self.project_about.setObjectName(u"project_about")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.suffix_false.sizePolicy().hasHeightForWidth())
-        self.suffix_false.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.project_about.sizePolicy().hasHeightForWidth())
+        self.project_about.setSizePolicy(sizePolicy)
+        font = QFont()
+        font.setUnderline(True)
+        self.project_about.setFont(font)
+        self.project_about.setCursor(QCursor(Qt.PointingHandCursor))
+        self.project_about.setFocusPolicy(Qt.NoFocus)
+        self.project_about.setStyleSheet(u"border:none;color:#144A74")
+        self.project_about.setCheckable(False)
 
-        self.horizontalLayout_5.addWidget(self.suffix_false)
+        self.about_layout.addWidget(self.project_about)
 
-        self.suffix_true = QRadioButton(self.suffix_box)
-        self.suffix_true.setObjectName(u"suffix_true")
-        sizePolicy.setHeightForWidth(self.suffix_true.sizePolicy().hasHeightForWidth())
-        self.suffix_true.setSizePolicy(sizePolicy)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_5.addWidget(self.suffix_true)
-
-        self.suffix = QLineEdit(self.suffix_box)
-        self.suffix.setObjectName(u"suffix")
-        sizePolicy.setHeightForWidth(self.suffix.sizePolicy().hasHeightForWidth())
-        self.suffix.setSizePolicy(sizePolicy)
-        self.suffix.setMaximumSize(QSize(300, 400))
-
-        self.horizontalLayout_5.addWidget(self.suffix)
+        self.about_layout.addItem(self.horizontalSpacer_2)
 
 
-        self.suffix_layout.addWidget(self.suffix_box)
+        self.gridLayout.addLayout(self.about_layout, 1, 2, 1, 1)
+
+        self.iteration_layout = QHBoxLayout()
+        self.iteration_layout.setObjectName(u"iteration_layout")
+        self.iteration_box = QGroupBox(self.centralwidget)
+        self.iteration_box.setObjectName(u"iteration_box")
+        self.horizontalLayout_3 = QHBoxLayout(self.iteration_box)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.iteration_false = QRadioButton(self.iteration_box)
+        self.iteration_false.setObjectName(u"iteration_false")
+        sizePolicy.setHeightForWidth(self.iteration_false.sizePolicy().hasHeightForWidth())
+        self.iteration_false.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_3.addWidget(self.iteration_false)
+
+        self.iteration_true = QRadioButton(self.iteration_box)
+        self.iteration_true.setObjectName(u"iteration_true")
+        sizePolicy.setHeightForWidth(self.iteration_true.sizePolicy().hasHeightForWidth())
+        self.iteration_true.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_3.addWidget(self.iteration_true)
 
 
-        self.gridLayout.addLayout(self.suffix_layout, 8, 3, 1, 1)
+        self.iteration_layout.addWidget(self.iteration_box)
+
+
+        self.gridLayout.addLayout(self.iteration_layout, 9, 0, 1, 1)
 
         self.control_layout = QHBoxLayout()
         self.control_layout.setObjectName(u"control_layout")
@@ -118,9 +137,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer = QSpacerItem(20, 23, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.revert = QPushButton(self.centralwidget)
+        self.revert.setObjectName(u"revert")
+
+        self.verticalLayout.addWidget(self.revert)
 
         self.rename = QPushButton(self.centralwidget)
         self.rename.setObjectName(u"rename")
@@ -131,45 +155,7 @@ class Ui_MainWindow(object):
         self.control_layout.addLayout(self.verticalLayout)
 
 
-        self.gridLayout.addLayout(self.control_layout, 9, 1, 1, 3)
-
-        self.nav_layout = QHBoxLayout()
-        self.nav_layout.setObjectName(u"nav_layout")
-        self.address = QLineEdit(self.centralwidget)
-        self.address.setObjectName(u"address")
-
-        self.nav_layout.addWidget(self.address)
-
-        self.address_select = QPushButton(self.centralwidget)
-        self.address_select.setObjectName(u"address_select")
-
-        self.nav_layout.addWidget(self.address_select)
-
-
-        self.gridLayout.addLayout(self.nav_layout, 0, 1, 1, 3)
-
-        self.file_list = QListView(self.centralwidget)
-        self.file_list.setObjectName(u"file_list")
-        self.file_list.setMinimumSize(QSize(340, 0))
-
-        self.gridLayout.addWidget(self.file_list, 6, 1, 1, 1)
-
-        self.all_select_layout = QHBoxLayout()
-        self.all_select_layout.setObjectName(u"all_select_layout")
-        self.suffix_select = QComboBox(self.centralwidget)
-        self.suffix_select.setObjectName(u"suffix_select")
-
-        self.all_select_layout.addWidget(self.suffix_select)
-
-        self.all_select = QPushButton(self.centralwidget)
-        self.all_select.setObjectName(u"all_select")
-        sizePolicy.setHeightForWidth(self.all_select.sizePolicy().hasHeightForWidth())
-        self.all_select.setSizePolicy(sizePolicy)
-
-        self.all_select_layout.addWidget(self.all_select)
-
-
-        self.gridLayout.addLayout(self.all_select_layout, 1, 1, 1, 1)
+        self.gridLayout.addLayout(self.control_layout, 10, 0, 1, 3)
 
         self.in_out_layout = QVBoxLayout()
         self.in_out_layout.setObjectName(u"in_out_layout")
@@ -190,43 +176,95 @@ class Ui_MainWindow(object):
         self.in_out_layout.addWidget(self.select_out)
 
 
-        self.gridLayout.addLayout(self.in_out_layout, 6, 2, 1, 1)
+        self.gridLayout.addLayout(self.in_out_layout, 7, 1, 1, 1)
 
-        self.iteration_layout = QHBoxLayout()
-        self.iteration_layout.setObjectName(u"iteration_layout")
-        self.iteration_box = QGroupBox(self.centralwidget)
-        self.iteration_box.setObjectName(u"iteration_box")
-        self.horizontalLayout_3 = QHBoxLayout(self.iteration_box)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.iteration_false = QRadioButton(self.iteration_box)
-        self.iteration_false.setObjectName(u"iteration_false")
-        sizePolicy.setHeightForWidth(self.iteration_false.sizePolicy().hasHeightForWidth())
-        self.iteration_false.setSizePolicy(sizePolicy)
+        self.suffix_layout = QHBoxLayout()
+        self.suffix_layout.setObjectName(u"suffix_layout")
+        self.suffix_box = QGroupBox(self.centralwidget)
+        self.suffix_box.setObjectName(u"suffix_box")
+        self.horizontalLayout_5 = QHBoxLayout(self.suffix_box)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.suffix_false = QRadioButton(self.suffix_box)
+        self.suffix_false.setObjectName(u"suffix_false")
+        sizePolicy.setHeightForWidth(self.suffix_false.sizePolicy().hasHeightForWidth())
+        self.suffix_false.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout_3.addWidget(self.iteration_false)
+        self.horizontalLayout_5.addWidget(self.suffix_false)
 
-        self.iteration_true = QRadioButton(self.iteration_box)
-        self.iteration_true.setObjectName(u"iteration_true")
-        sizePolicy.setHeightForWidth(self.iteration_true.sizePolicy().hasHeightForWidth())
-        self.iteration_true.setSizePolicy(sizePolicy)
+        self.suffix_true = QRadioButton(self.suffix_box)
+        self.suffix_true.setObjectName(u"suffix_true")
+        sizePolicy.setHeightForWidth(self.suffix_true.sizePolicy().hasHeightForWidth())
+        self.suffix_true.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout_3.addWidget(self.iteration_true)
+        self.horizontalLayout_5.addWidget(self.suffix_true)
+
+        self.suffix = QLineEdit(self.suffix_box)
+        self.suffix.setObjectName(u"suffix")
+        sizePolicy.setHeightForWidth(self.suffix.sizePolicy().hasHeightForWidth())
+        self.suffix.setSizePolicy(sizePolicy)
+        self.suffix.setMaximumSize(QSize(300, 400))
+
+        self.horizontalLayout_5.addWidget(self.suffix)
 
 
-        self.iteration_layout.addWidget(self.iteration_box)
+        self.suffix_layout.addWidget(self.suffix_box)
 
 
-        self.gridLayout.addLayout(self.iteration_layout, 8, 1, 1, 1)
-
-        self.file_number = QLabel(self.centralwidget)
-        self.file_number.setObjectName(u"file_number")
-
-        self.gridLayout.addWidget(self.file_number, 7, 1, 1, 1)
+        self.gridLayout.addLayout(self.suffix_layout, 9, 2, 1, 1)
 
         self.select_number = QLabel(self.centralwidget)
         self.select_number.setObjectName(u"select_number")
 
-        self.gridLayout.addWidget(self.select_number, 7, 3, 1, 1)
+        self.gridLayout.addWidget(self.select_number, 8, 2, 1, 1)
+
+        self.file_list = QListView(self.centralwidget)
+        self.file_list.setObjectName(u"file_list")
+        self.file_list.setMinimumSize(QSize(340, 0))
+
+        self.gridLayout.addWidget(self.file_list, 7, 0, 1, 1)
+
+        self.file_number = QLabel(self.centralwidget)
+        self.file_number.setObjectName(u"file_number")
+
+        self.gridLayout.addWidget(self.file_number, 8, 0, 1, 1)
+
+        self.select_list = QListView(self.centralwidget)
+        self.select_list.setObjectName(u"select_list")
+        self.select_list.setMinimumSize(QSize(340, 0))
+
+        self.gridLayout.addWidget(self.select_list, 7, 2, 1, 1)
+
+        self.all_select_layout = QHBoxLayout()
+        self.all_select_layout.setObjectName(u"all_select_layout")
+        self.suffix_select = QComboBox(self.centralwidget)
+        self.suffix_select.setObjectName(u"suffix_select")
+
+        self.all_select_layout.addWidget(self.suffix_select)
+
+        self.all_select = QPushButton(self.centralwidget)
+        self.all_select.setObjectName(u"all_select")
+        sizePolicy.setHeightForWidth(self.all_select.sizePolicy().hasHeightForWidth())
+        self.all_select.setSizePolicy(sizePolicy)
+
+        self.all_select_layout.addWidget(self.all_select)
+
+
+        self.gridLayout.addLayout(self.all_select_layout, 1, 0, 1, 1)
+
+        self.nav_layout = QHBoxLayout()
+        self.nav_layout.setObjectName(u"nav_layout")
+        self.address = QLineEdit(self.centralwidget)
+        self.address.setObjectName(u"address")
+
+        self.nav_layout.addWidget(self.address)
+
+        self.address_select = QPushButton(self.centralwidget)
+        self.address_select.setObjectName(u"address_select")
+
+        self.nav_layout.addWidget(self.address_select)
+
+
+        self.gridLayout.addLayout(self.nav_layout, 0, 0, 1, 3)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -237,21 +275,27 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.suffix_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540e\u7f00", None))
-        self.suffix_false.setText(QCoreApplication.translate("MainWindow", u"\u4e0d\u4fee\u6539\u540e\u7f00", None))
-        self.suffix_true.setText(QCoreApplication.translate("MainWindow", u"\u4fee\u6539\u540e\u7f00\u4e3a\uff1a", None))
-        self.name_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540d\u79f0\u8bbe\u7f6e", None))
-        self.name_label.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u540d\u79f0", None))
-        self.no_label.setText(QCoreApplication.translate("MainWindow", u"\u8d77\u59cb\u5e8f\u6570", None))
-        self.rename.setText(QCoreApplication.translate("MainWindow", u"\u6279\u91cf\u91cd\u547d\u540d", None))
-        self.address_select.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00\u6587\u4ef6\u5939", None))
-        self.all_select.setText(QCoreApplication.translate("MainWindow", u"\u5168\u9009", None))
-        self.select_in.setText(QCoreApplication.translate("MainWindow", u">", None))
-        self.select_out.setText(QCoreApplication.translate("MainWindow", u"<", None))
+        self.name_about.setText(QCoreApplication.translate("MainWindow", u"Design by @Reilkay", None))
+        self.project_about.setText(QCoreApplication.translate("MainWindow", u"\u9879\u76ee\u5730\u5740", None))
         self.iteration_box.setTitle(QCoreApplication.translate("MainWindow", u"\u8fed\u4ee3\u6dfb\u52a0", None))
         self.iteration_false.setText(QCoreApplication.translate("MainWindow", u"\u5426", None))
         self.iteration_true.setText(QCoreApplication.translate("MainWindow", u"\u662f", None))
-        self.file_number.setText(QCoreApplication.translate("MainWindow", u"\u603b\u8ba1\uff1a", None))
+        self.name_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540d\u79f0\u8bbe\u7f6e", None))
+        self.name_label.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u540d\u79f0", None))
+        self.no_label.setText(QCoreApplication.translate("MainWindow", u"\u8d77\u59cb\u5e8f\u6570", None))
+        self.revert.setText(QCoreApplication.translate("MainWindow", u"\u64a4\u9500", None))
+#if QT_CONFIG(shortcut)
+        self.revert.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Z", None))
+#endif // QT_CONFIG(shortcut)
+        self.rename.setText(QCoreApplication.translate("MainWindow", u"\u6279\u91cf\u91cd\u547d\u540d", None))
+        self.select_in.setText(QCoreApplication.translate("MainWindow", u">", None))
+        self.select_out.setText(QCoreApplication.translate("MainWindow", u"<", None))
+        self.suffix_box.setTitle(QCoreApplication.translate("MainWindow", u"\u540e\u7f00", None))
+        self.suffix_false.setText(QCoreApplication.translate("MainWindow", u"\u4e0d\u4fee\u6539\u540e\u7f00", None))
+        self.suffix_true.setText(QCoreApplication.translate("MainWindow", u"\u4fee\u6539\u540e\u7f00\u4e3a\uff1a", None))
         self.select_number.setText(QCoreApplication.translate("MainWindow", u"\u603b\u8ba1\uff1a", None))
+        self.file_number.setText(QCoreApplication.translate("MainWindow", u"\u603b\u8ba1\uff1a", None))
+        self.all_select.setText(QCoreApplication.translate("MainWindow", u"\u5168\u9009", None))
+        self.address_select.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00\u6587\u4ef6\u5939", None))
     # retranslateUi
 
