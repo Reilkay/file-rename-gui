@@ -3,7 +3,7 @@
   <p align="center">A simple gui program for rename files.<p>
   <p align="center">
     <a href="https://blog.reilkay.com/about/"><img src="https://img.shields.io/badge/MADE--BY-Ray-blue?style=flat-square" alt="Binray • 二进制蕾伊"></a>
-    <img src="https://img.shields.io/badge/VRESION-Alpha_0.2-critical?style=flat-square" alt="version Alpha_0.2">
+    <img src="https://img.shields.io/badge/VRESION-Alpha_0.3-critical?style=flat-square" alt="version Alpha_0.3">
   </p>
 </p>
 
